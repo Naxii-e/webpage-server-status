@@ -1,4 +1,6 @@
 # Website Server Status
+![image](https://user-images.githubusercontent.com/78034307/111272989-9f314000-8676-11eb-9a0a-6da001996d9d.png)
+
 
 ## About
 The front-end is developed using Bootstrap, and the back-end is developed using Python3 with Flask and jinja2.
