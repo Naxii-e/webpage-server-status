@@ -1,0 +1,42 @@
+    <!--
+        Copyright (c) 2021 Naxii
+        This code is released under the MIT License, see LICENSE, see LICENSE.
+        This website content is released under the CC BY 4.0 License, see LICENSE.
+    -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- start styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <link href="/static/css/style.css" rel="stylesheet">
+    <script src="/static/js/main.js"></script>
+    <!-- end styles -->
+    <!-- start fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+    <!-- end fonts -->
+    <title>{{ title }}</title>
+</head>
+<body>
+    <!--start header-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+          <!-- <img href="#" src="/static/img/logo.png" height="40" class="d-inline-block align-top" style="margin-right: 4px;" alt=""> -->
+          Server Status
+        </a>
+    </nav>
+    <!--end header-->
+    {%- block content %}
+    {% endblock %}
+    <footer class="container-fluid">
+        Infomation at {{ time }} 
+    </footer>
+</body>
+</html>

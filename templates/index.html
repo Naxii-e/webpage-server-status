@@ -1,0 +1,75 @@
+    <!--
+        Copyright (c) 2021 Naxii
+        This code is released under the MIT License, see LICENSE, see LICENSE.
+        This website content is released under the CC BY 4.0 License, see LICENSE.
+    -->
+
+{%- extends "layout.html" %}
+{%- block content %}
+<div class="main">
+    <h1>Server Status</h1>
+    <p>This displays the server status of the website.</p>
+    <p>If the web server returns an HTTP response of 200, it is considered a success, and if it returns anything else, it is considered an error.</p>
+    <p></p>
+    <div class="row">
+        <div class="card-deck">
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+                {% for result in result %}
+                    {% if result.res == "ok" %}
+                    <div class="col">
+                        <div class="card text-white bg-success mb-3 h-100" style="max-width: 400px;">
+                            <div class="card-header">{{ result.dn }}</div>
+                            <div class="card-body">
+                              <h5 class="card-title">✔ Operational</h5>
+                              <p class="card-text">No problems at {{ result.dn }}.</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% elif result.res == "connectionerror" %}
+                    <div class="col">
+                        <div class="card text-white bg-danger mb-3 h-100" style="max-width: 400px;">
+                            <div class="card-header">{{ result.dn }}</div>
+                            <div class="card-body">
+                              <h5 class="card-title">× Problems at {{ result.dn }}</h5>
+                              <p class="card-text">A connection error has occurred at {{ result.dn }}.</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% elif result.res == "timeouterror" %}
+                    <div class="col">
+                        <div class="card text-white bg-danger mb-3 h-100" style="max-width: 400px;">
+                            <div class="card-header">{{ result.dn }}</div>
+                            <div class="card-body">
+                              <h5 class="card-title">× Problems at {{ result.dn }}</h5>
+                              <p class="card-text">A timeout has occurred at {{ result.dn }}.</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% elif result.res == "sslerror" %}
+                    <div class="col">
+                        <div class="card text-white bg-danger mb-3 h-100" style="max-width: 400px;">
+                            <div class="card-header">{{ result.dn }}</div>
+                            <div class="card-body">
+                              <h5 class="card-title">⚠ Errors at {{ result.dn }}</h5>
+                              <p class="card-text">An SSL error has occurred at {{ result.dn }}.</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% elif result.res == "toomanyredirectserror" %}
+                    <div class="col">
+                        <div class="card text-white bg-secondary mb-3 h-100" style="max-width: 400px;">
+                            <div class="card-header">{{ result.dn }}</div>
+                            <div class="card-body">
+                              <h5 class="card-title">⚠ Errors at {{ result.dn }}</h5>
+                              <p class="card-text">Too many redirects error has occurred at {{ result.dn }}.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{%- endblock %}

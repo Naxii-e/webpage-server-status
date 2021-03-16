@@ -1,0 +1,34 @@
+/*
+    Copyright (c) 2021 Naxii
+    This code is released under the MIT License, see LICENSE, see LICENSE.
+    This website content is released under the CC BY 4.0 License, see LICENSE.
+*/
+
+.main {
+    padding: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.card-deck {
+    width: auto;
+    padding: 20px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.col {
+    padding: 20px;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+.navbar-brand {
+    font-size: 25px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+}
