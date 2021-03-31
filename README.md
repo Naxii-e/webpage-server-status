@@ -5,7 +5,7 @@
 ## About
 The front-end is developed using Bootstrap, and the back-end is developed using Python3 with Flask and jinja2.
 
-##Sstructure
+##Structure
 
 main_example.py
 ```python
