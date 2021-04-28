@@ -4,7 +4,7 @@
 #
 
 from flask import Flask, render_template, jsonify
-import requests, json, datetime
+import requests, datetime
 
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
@@ -38,12 +38,12 @@ def index():
     for (resp, dn) in zip(hosts, displayname):
         try:
             requests.get(resp, timeout=1.5)
-        except requests.exceptions.ConnectionError:
-            result.append({'host': resp, 'dn': dn, 'res': 'connectionerror'})
         except requests.exceptions.ConnectTimeout:
             result.append({'host': resp, 'dn': dn, 'res': 'timeouterror'})
         except requests.exceptions.SSLError:
             result.append({'host': resp, 'dn': dn, 'res': 'sslerror'})
+        except requests.exceptions.ConnectionError:
+            result.append({'host': resp, 'dn': dn, 'res': 'connectionerror'})
         except requests.exceptions.TooManyRedirects:
             result.append({'host': resp, 'dn': dn, 'res': 'toomanyredirectserror'})
         else:
@@ -58,12 +58,12 @@ def api():
     for (resp, dn) in zip(hosts, displayname):
         try:
             requests.get(resp, timeout=1.5)
-        except requests.exceptions.ConnectionError:
-            result.append({'host': resp, 'dn': dn, 'res': 'connectionerror'})
         except requests.exceptions.ConnectTimeout:
             result.append({'host': resp, 'dn': dn, 'res': 'timeouterror'})
         except requests.exceptions.SSLError:
             result.append({'host': resp, 'dn': dn, 'res': 'sslerror'})
+        except requests.exceptions.ConnectionError:
+            result.append({'host': resp, 'dn': dn, 'res': 'connectionerror'})
         except requests.exceptions.TooManyRedirects:
             result.append({'host': resp, 'dn': dn, 'res': 'toomanyredirectserror'})
         else:
