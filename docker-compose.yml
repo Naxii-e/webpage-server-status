@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app:
+    restart: always
+    build: .
+    ports:
+    - "8080:5000"
+    container_name: 'webpage-status'
+    working_dir: /root/src
+    volumes:
+      - ./src:${WORKDIR_PATH}
+    command: python main.py
+
