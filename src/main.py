@@ -18,6 +18,8 @@ hosts = [
     "https://amazon.co.jp/",
     "https://yahoo.co.jp/",
     "https://github.com/"
+    "https://z0xp.net/",
+    "https://z0xp.dev/"
 
 ]
 
@@ -29,7 +31,12 @@ displayname = [
     "Amazon",
     "Yahoo",
     "GitHub"
+    "z0xp.net",
+    "z0xp.dev"
 ]
+
+def alert(msg):
+    print(f"[INFO] {msg}")
 
 @app.route("/") 
 def index():
@@ -38,16 +45,22 @@ def index():
     for (resp, dn) in zip(hosts, displayname):
         try:
             requests.get(resp, timeout=1.5)
+            
         except requests.exceptions.ConnectTimeout:
             result.append({'host': resp, 'dn': dn, 'res': 'timeouterror'})
+            alert(f"{resp} はタイムアウトしています。")
         except requests.exceptions.SSLError:
             result.append({'host': resp, 'dn': dn, 'res': 'sslerror'})
+            alert(f"{resp} はSSL/TLSエラーを起こしています。")
         except requests.exceptions.ConnectionError:
             result.append({'host': resp, 'dn': dn, 'res': 'connectionerror'})
+            alert(f"{resp} は接続できません。")
         except requests.exceptions.TooManyRedirects:
             result.append({'host': resp, 'dn': dn, 'res': 'toomanyredirectserror'})
+            alert(f"{resp} はリダイレクトエラーを起こしています。")
         else:
             result.append({'host': resp, 'dn': dn, 'res': 'ok'})
+            alert(f"{resp} は正常です。")
     return render_template("index.html", title="Status", result=result, time=dt_now.strftime('%Y.%m.%d %H:%M:%S'))
 
 
