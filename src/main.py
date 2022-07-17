@@ -30,7 +30,7 @@ displayname = [
     "Google",
     "Amazon",
     "Yahoo",
-    "GitHub"
+    "GitHub",
     "z0xp.net",
     "z0xp.dev"
 ]
